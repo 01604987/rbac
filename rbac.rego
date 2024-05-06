@@ -2,6 +2,15 @@ package opa.examples
 
 import rego.v1
 
-import input.input.user
+import input.attributes.request.http
 
-allow if user == "admin"
+default allow := false
+
+allow if {
+  action_allowed
+}
+
+action_allowed if {
+  http.method == "GET"
+  glob.match("/meta", ["/"], http.path) 
+}

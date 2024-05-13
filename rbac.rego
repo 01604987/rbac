@@ -1,4 +1,4 @@
-package opa.examples
+package auth.example
 
 import rego.v1
 
